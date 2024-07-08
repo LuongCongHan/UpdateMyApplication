@@ -32,6 +32,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.lbPercent = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // progressBar1
@@ -60,11 +61,21 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // lbPercent
+            // 
+            this.lbPercent.AutoSize = true;
+            this.lbPercent.Location = new System.Drawing.Point(135, 78);
+            this.lbPercent.Name = "lbPercent";
+            this.lbPercent.Size = new System.Drawing.Size(35, 13);
+            this.lbPercent.TabIndex = 3;
+            this.lbPercent.Text = "label2";
+            // 
             // frmDownloadAndExtract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(311, 111);
+            this.Controls.Add(this.lbPercent);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
@@ -83,5 +94,6 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label lbPercent;
     }
 }

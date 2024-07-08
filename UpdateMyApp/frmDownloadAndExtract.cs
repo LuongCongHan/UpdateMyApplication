@@ -23,7 +23,10 @@ namespace UpdateMyApp
         {
             InitializeComponent();
             this.MaximizeBox = false;//Ngăn không cho phóng to form khi nhấn đúp vào thanh điêu đề ( title bar)
-            methodInvoker = new MethodInvoker(() => { progressBar1.Value = progressbarValue; });
+            methodInvoker = new MethodInvoker(() => {
+                progressBar1.Value = progressbarValue;
+                lbPercent.Text = string.Format("{0} %", (int)((float)progressbarValue / int.MaxValue *100)); //Hiển thị phần trăm nguyên
+            });
             progressBar1.Maximum = int.MaxValue;
         }
         public UpdateVersion _updateVersion;
@@ -83,7 +86,7 @@ namespace UpdateMyApp
                     {
                         _lengthTemp = _fileInfo.Length + _currentIndexLength;
                         progressbarValue = (int)(_lengthTemp * int.MaxValue / _toTalLengthUnzip);
-                        this.Invoke(methodInvoker);
+                        this.Invoke(methodInvoker); //Xuất thông báo ra Progressbar 
                         if (_lengthTemp == value || isStopRefresh) break;
                     }
                     catch { }
