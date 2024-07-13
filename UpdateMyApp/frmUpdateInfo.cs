@@ -49,27 +49,39 @@ namespace UpdateMyApp
             btnUpdate.Visible = false;
             //timerCheckUpdate.Stop();
             //Check update
-            bool isUpdate = await CheckUpdateAsync();
-            if (isUpdate)
+            try
             {
-                //Convert Bytes to Megabytes (Hệ nhị phân)
-                lbLinkUpdate.Text = string.Format("{0} {1} is now available. Would you like to download it now?", this.ProductName, _updateVersion.Version);
-                lbLinkUpdate.LinkArea = new LinkArea(0, this.ProductName.Length + _updateVersion.Version.Length + 1);
-                lbSize.Text = "Download size: ...";
-
-                lbLinkUpdate.Visible = true;
-                lbSize.Visible = true;
-                picLoad.Visible = false;
-
-                using (HttpResponseMessage headResponse = await _httpClient.GetAsync(_updateVersion.Url, HttpCompletionOption.ResponseHeadersRead))
+                bool isUpdate = await CheckUpdateAsync();
+                if (isUpdate)
                 {
-                    _totalDownloadSize = headResponse.Content.Headers.ContentLength;
+                    //Convert Bytes to Megabytes (Hệ nhị phân)
+                    lbLinkUpdate.Text = string.Format("{0} {1} is now available. Would you like to download it now?", this.ProductName, _updateVersion.Version);
+                    lbLinkUpdate.LinkArea = new LinkArea(0, this.ProductName.Length + _updateVersion.Version.Length + 1);
+                    lbSize.Text = "Download size: ...";
+
+                    lbLinkUpdate.Visible = true;
+                    lbSize.Visible = true;
+                    picLoad.Visible = false;
+
+                    using (HttpResponseMessage headResponse = await _httpClient.GetAsync(_updateVersion.Url, HttpCompletionOption.ResponseHeadersRead))
+                    {
+                        _totalDownloadSize = headResponse.Content.Headers.ContentLength;
+                    }
+                    //Giải quyết vấn đề bộ nhớ tăng
+                    double mb = (double)(_totalDownloadSize / Math.Pow(2, 20));
+                    lbSize.Text = string.Format("Download size: {0} MB", mb.ToString("F2"));
+                    lbSize.Visible = true;
+                    btnUpdate.Visible = true;
                 }
-                //Giải quyết vấn đề bộ nhớ tăng
-                double mb = (double)(_totalDownloadSize / Math.Pow(2, 20));
-                lbSize.Text = string.Format("Download size: {0} MB", mb.ToString("F2"));
-                lbSize.Visible = true;
-                btnUpdate.Visible = true;
+            }
+            catch
+            {
+                await Task.Delay(500);
+                picLoad.Visible = false;
+                lbSize.Visible = false;
+                lbLinkUpdate.LinkArea = new LinkArea(0, 0);
+                lbLinkUpdate.Visible = true;
+                lbLinkUpdate.Text = "Failed to download version information.";
             }
 
         }
