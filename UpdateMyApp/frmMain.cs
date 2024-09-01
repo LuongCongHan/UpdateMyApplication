@@ -55,7 +55,9 @@ namespace UpdateMyApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hi");
+            //Xoá file cũ đi
+            //string path = @"C:\Users\Dell Latitude 3540\AppData\Local\Temp\{26E1A46A-AD69-43E4-B3C9-BBD65C5E82D8}";
+            //Directory.Delete(path, true);
         }
     }
 }

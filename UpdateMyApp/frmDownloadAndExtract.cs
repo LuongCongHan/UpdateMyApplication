@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,7 +27,6 @@ namespace UpdateMyApp
             });
             progressBar1.Maximum = int.MaxValue;
         }
-
         public UpdateVersion _updateVersion;
         string _downloadZipPath;
         public FileInfo _fileInfo;
@@ -222,7 +216,6 @@ namespace UpdateMyApp
                     Cancelclosed = false; //Cho phép đóng form
                     this.Close();
                 }
-
             }
             else //Nếu tải thất bại
             {
@@ -244,7 +237,6 @@ namespace UpdateMyApp
             //Mở file zip để đọc
             using (ZipArchive zip = await Task.Run(() => ZipFile.OpenRead(_downloadZipPath), _cancellationTokenSource.Token))
             {
-
                 //Tạo  thư mục theo tên filezip  temp/{4542C1F4-61C7-4C0D-A6EC-E805411B8184}/download
                 pathFolder = Path.Combine(Path.GetDirectoryName(_downloadZipPath),
                    Path.GetFileNameWithoutExtension(_downloadZipPath));
@@ -338,7 +330,6 @@ namespace UpdateMyApp
             if (Guid.TryParse(guidAttribute?.Value, out Guid guid)) { return guid; }
             return Guid.Empty;
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             if (_cancellationTokenSource == null || _cancellationTokenSource.IsCancellationRequested)
@@ -350,7 +341,6 @@ namespace UpdateMyApp
             isStopRefresh = true; //Khi nhấn huỷ thì báo cho AutoRefreshAsync đóng lại
                                   //   this.Close(); // Không gọi nó ở đây mà đợi các task khác đóng lại hết đã rồi mới Close ở vị trí khác
                                   //Đợi các task đang thực hiện- Nói cách khác là huỷ các task khác thì ct tự động đóng
-
             //test
             if (threadExtect != null)
             {
@@ -361,10 +351,7 @@ namespace UpdateMyApp
                     tcs.SetResult(Sentinel);
                 //threadExtect = null;
             }
-
-
         }
-
         private void frmDownloadAndExtract_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (_cancellationTokenSource == null || _cancellationTokenSource.IsCancellationRequested)
@@ -373,7 +360,6 @@ namespace UpdateMyApp
             isStopRefresh = true;
             e.Cancel = Cancelclosed;
         }
-
         private void btnRetry_Click(object sender, EventArgs e)
         {
             if (_cancellationTokenSourceCopy == null || _cancellationTokenSource.IsCancellationRequested)
