@@ -102,8 +102,8 @@ namespace UpdateMyApp
       public  UpdateVersion _updateVersion = new UpdateVersion();
         public async Task<bool> CheckUpdateAsync()
         {
-            string updateJson = await _httpClient.GetStringAsync("https://raw.githubusercontent.com/luongconghann/CapNhatApp/main/Update.json");
-            //string updateJson = await _httpClient.GetStringAsync("https://raw.githubusercontent.com/LuongCongHan/MyAppUpdate/master/MyUpdateApp/update.json");
+           // string updateJson = await _httpClient.GetStringAsync("https://raw.githubusercontent.com/LuongCongHan/TepVip6/master/WindowsFormsApp40/update.json");
+            string updateJson = await _httpClient.GetStringAsync("https://raw.githubusercontent.com/LuongCongHan/MyAppUpdate/master/MyUpdateApp/update.json");
             //Chuyển đổi Version về dạng dữ liệu đối tượng
             _updateVersion = JsonConvert.DeserializeObject<UpdateVersion>(updateJson);
         //    _updateVersion.Url = "https://github.com/LuongCongHan/MyAppUpdate/releases/download/File/AllFile.zip";

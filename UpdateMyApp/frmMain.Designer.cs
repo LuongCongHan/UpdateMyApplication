@@ -32,6 +32,7 @@
             this.lbCurrentVersion = new System.Windows.Forms.Label();
             this.btnCheckUpdate = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnCheckInternet = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbCurrentVersion
@@ -65,11 +66,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnCheckInternet
+            // 
+            this.btnCheckInternet.Location = new System.Drawing.Point(225, 160);
+            this.btnCheckInternet.Name = "btnCheckInternet";
+            this.btnCheckInternet.Size = new System.Drawing.Size(126, 23);
+            this.btnCheckInternet.TabIndex = 3;
+            this.btnCheckInternet.Text = "Kiểm tra Internet";
+            this.btnCheckInternet.UseVisualStyleBackColor = true;
+            this.btnCheckInternet.Click += new System.EventHandler(this.btnCheckInternet_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(438, 211);
+            this.Controls.Add(this.btnCheckInternet);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCheckUpdate);
             this.Controls.Add(this.lbCurrentVersion);
@@ -87,6 +99,7 @@
         private System.Windows.Forms.Label lbCurrentVersion;
         private System.Windows.Forms.Button btnCheckUpdate;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCheckInternet;
     }
 }
 
