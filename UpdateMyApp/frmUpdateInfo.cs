@@ -18,6 +18,7 @@ namespace UpdateMyApp
         public frmUpdateInfo()
         {
             InitializeComponent();
+            _httpClient.Timeout = TimeSpan.FromSeconds(3);
             lbLinkUpdate.LinkClicked += LbLinkUpdate_LinkClicked;
             lbLinkUpdate.MaximumSize = new Size(this.Size.Width - lbLinkUpdate.Location.X - 30, 0);
             lbLinkUpdate.AutoSize = true;
@@ -102,6 +103,7 @@ namespace UpdateMyApp
       public  UpdateVersion _updateVersion = new UpdateVersion();
         public async Task<bool> CheckUpdateAsync()
         {
+            
            // string updateJson = await _httpClient.GetStringAsync("https://raw.githubusercontent.com/LuongCongHan/TepVip6/master/WindowsFormsApp40/update.json");
             string updateJson = await _httpClient.GetStringAsync("https://raw.githubusercontent.com/LuongCongHan/MyAppUpdate/master/MyUpdateApp/update.json");
             //Chuyển đổi Version về dạng dữ liệu đối tượng

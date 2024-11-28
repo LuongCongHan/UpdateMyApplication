@@ -138,5 +138,20 @@ namespace UpdateMyApp
             }
             return txt;
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            MessageBox.Show("sau 5s");
+        }
+
+        private void btnBatTimer_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
+
+        private void btnTatTimer_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+        }
     }
 }

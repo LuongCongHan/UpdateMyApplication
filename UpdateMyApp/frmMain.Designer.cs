@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.lbCurrentVersion = new System.Windows.Forms.Label();
             this.btnCheckUpdate = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnCheckInternet = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnBatTimer = new System.Windows.Forms.Button();
+            this.btnTatTimer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbCurrentVersion
@@ -76,11 +80,38 @@
             this.btnCheckInternet.UseVisualStyleBackColor = true;
             this.btnCheckInternet.Click += new System.EventHandler(this.btnCheckInternet_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 5000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btnBatTimer
+            // 
+            this.btnBatTimer.Location = new System.Drawing.Point(115, 13);
+            this.btnBatTimer.Name = "btnBatTimer";
+            this.btnBatTimer.Size = new System.Drawing.Size(75, 23);
+            this.btnBatTimer.TabIndex = 4;
+            this.btnBatTimer.Text = "Bật timer";
+            this.btnBatTimer.UseVisualStyleBackColor = true;
+            this.btnBatTimer.Click += new System.EventHandler(this.btnBatTimer_Click);
+            // 
+            // btnTatTimer
+            // 
+            this.btnTatTimer.Location = new System.Drawing.Point(247, 12);
+            this.btnTatTimer.Name = "btnTatTimer";
+            this.btnTatTimer.Size = new System.Drawing.Size(75, 23);
+            this.btnTatTimer.TabIndex = 4;
+            this.btnTatTimer.Text = "Tắt Timer";
+            this.btnTatTimer.UseVisualStyleBackColor = true;
+            this.btnTatTimer.Click += new System.EventHandler(this.btnTatTimer_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(438, 211);
+            this.Controls.Add(this.btnTatTimer);
+            this.Controls.Add(this.btnBatTimer);
             this.Controls.Add(this.btnCheckInternet);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCheckUpdate);
@@ -100,6 +131,9 @@
         private System.Windows.Forms.Button btnCheckUpdate;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnCheckInternet;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button btnBatTimer;
+        private System.Windows.Forms.Button btnTatTimer;
     }
 }
 

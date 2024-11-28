@@ -11,5 +11,7 @@ namespace UpdateMyApp
         public string Version { get; set; }
         public string Url { get; set; }
         public string Info { get; set; }
+        public string fileName { get; set; }
+        public string fileExtension { get; set; }
     }
 }

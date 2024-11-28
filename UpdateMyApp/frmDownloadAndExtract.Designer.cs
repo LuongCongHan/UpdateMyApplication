@@ -28,25 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDownloadAndExtract));
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lbPercent = new System.Windows.Forms.Label();
-            this.btnRetry = new System.Windows.Forms.Button();
+            this.timerCheckInternet = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(30, 43);
+            this.progressBar1.Location = new System.Drawing.Point(14, 45);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(268, 23);
+            this.progressBar1.Size = new System.Drawing.Size(264, 23);
             this.progressBar1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(113, 22);
+            this.label1.Location = new System.Drawing.Point(14, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 1;
@@ -54,7 +55,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(235, 97);
+            this.btnCancel.Location = new System.Drawing.Point(203, 90);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 2;
@@ -65,28 +66,22 @@
             // lbPercent
             // 
             this.lbPercent.AutoSize = true;
-            this.lbPercent.Location = new System.Drawing.Point(135, 78);
+            this.lbPercent.Location = new System.Drawing.Point(14, 80);
             this.lbPercent.Name = "lbPercent";
             this.lbPercent.Size = new System.Drawing.Size(24, 13);
             this.lbPercent.TabIndex = 3;
             this.lbPercent.Text = "0 %";
             // 
-            // btnRetry
+            // timerCheckInternet
             // 
-            this.btnRetry.Location = new System.Drawing.Point(154, 97);
-            this.btnRetry.Name = "btnRetry";
-            this.btnRetry.Size = new System.Drawing.Size(75, 23);
-            this.btnRetry.TabIndex = 4;
-            this.btnRetry.Text = "Retry";
-            this.btnRetry.UseVisualStyleBackColor = true;
-            this.btnRetry.Click += new System.EventHandler(this.btnRetry_Click);
+            this.timerCheckInternet.Interval = 1000;
+            this.timerCheckInternet.Tick += new System.EventHandler(this.timerCheckInternet_Tick);
             // 
             // frmDownloadAndExtract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(316, 125);
-            this.Controls.Add(this.btnRetry);
+            this.ClientSize = new System.Drawing.Size(290, 122);
             this.Controls.Add(this.lbPercent);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label1);
@@ -107,6 +102,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lbPercent;
-        private System.Windows.Forms.Button btnRetry;
+        private System.Windows.Forms.Timer timerCheckInternet;
     }
 }
